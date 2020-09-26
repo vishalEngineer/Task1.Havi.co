@@ -1,0 +1,127 @@
+
+<html>
+<head>
+  <title>Sorting Tables w/ JavaScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="tablesort.css">
+   
+  
+</head>
+
+<body>
+  <!-- <p id="total" style="font-family:verdana">Nutrition</p> -->
+  <table class="table-sortable" >
+    <thead>
+      <tr>
+        <td><input type="checkbox" id="SelectAll" onclick="toggle(this)"/><span id="total" style="font-family:verdana">Nutrition</span> &nbsp;   </td>
+         <th>Deserts(100gms serving)</th>
+        <th>Calories</th>
+        <th>Fat(g)</th>
+        <th>Carbs(g)</th>
+        <th>Proteins(g)</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><input type="checkbox" id="Select1" name="foo" onclick="checkboxes()" />    &nbsp;   </td>
+        <td>CupCake</td>
+        
+        <td>305</td>
+        <td>3.7</td>
+        <td>63</td>
+        <td>4.3</td>
+        
+      </tr>
+      <tr>
+        
+        <td><input type="checkbox" id="Select2" name="foo" onclick="checkboxes()"/>    &nbsp;   </td>
+        <td>Donut</td>
+        
+        <td>452</td>
+        <td>25</td>
+        <td>51</td>
+        <td>4.9</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="Select3" onclick="checkboxes()"/>    &nbsp;   </td>
+        <td>Eclair</td>
+        
+        <td>262</td>
+        <td>16</td>
+        <td>24</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="Select4" onclick="checkboxes()"/>    &nbsp;   </td>
+        <td>Frozen Yoghurt</td>
+        
+        <td>159</td>
+        <td>6</td>
+        <td>24</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="Select5" onclick="checkboxes()"/>    &nbsp;   </td>
+        <td>GingerBread</td>
+        
+        <td>356</td>
+        <td>16</td>
+        <td>49</td>
+        <td>3.9</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="sorttable.js"></script>
+  <script language="JavaScript">
+    var count=0;
+    var num=0;
+    function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    if(document.getElementById("SelectAll").checked == true){
+        num=(checkboxes.length)-1;
+        document.getElementById("total").innerHTML = num+"selected";}
+     else document.getElementById("total").innerHTML = "Nutrition";
+    
+  for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i] != source)
+          checkboxes[i].checked = source.checked;
+    }
+  }
+    //var allbox = checkboxes();
+    // document.getElementById("total").innerHTML = return checkboxes();
+
+    // function values(){
+    //   if(document.getElementById("Select1").checked == true)
+    //     count=count+1;
+    //   else count = count-1;
+    //   document.getElementById("total").innerHTML = count;
+    // }
+    function checkboxes()
+      {
+       var inputElems = document.getElementsByTagName("input"),
+        count = 0;
+
+        for (var i=0; i<inputElems.length; i++) {       
+           if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
+              count++;
+              //alert(count);
+           }
+
+        }
+         //document.getElementById("total").innerHTML = (count-1)+"selected";
+        if(count==0){
+        document.getElementById("total").innerHTML = "Nutrition";}
+        else document.getElementById("total").innerHTML = (count-1)+"selected";
+        
+        //return count;
+     }
+
+
+
+    </script>
+
+</body>
+</html> 
